@@ -2,4 +2,15 @@ extends layout
 
 block content
     h3 #{title}
-    p it`s work
+    table.table.table-bordered
+        thead
+            tr
+                th(scope='col') #
+                th(scope='col') Name
+                th(scope='col') Salary
+        tbody
+            each employee, i in employees
+                tr
+                    th(scope='row')=employee.id
+                    td=employee.name
+                    td=employee.salary

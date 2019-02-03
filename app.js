@@ -16,8 +16,26 @@ app.get('/', function(req, res){
 
 // Employees list
 app.get('/employees', function(req, res){
+    var employees = [
+        {
+            id:1,
+            name:'Alex',
+            salary:3000,
+        },
+        {
+            id:2,
+            name:'Ben',
+            salary:4000,
+        },
+        {
+            id:3,
+            name:'Liv',
+            salary:5000,
+        }
+    ];
     res.render('employees_list', {
-        title:'Employees List'
+        title:'Employees List',
+        employees:employees
     });
 });
 

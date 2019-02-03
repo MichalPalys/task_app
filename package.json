@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MichalPalys/task_app/issues"
   },
-  "homepage": "https://github.com/MichalPalys/task_app#readme"
+  "homepage": "https://github.com/MichalPalys/task_app#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }

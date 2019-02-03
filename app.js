@@ -14,6 +14,13 @@ app.get('/', function(req, res){
     res.render('index');
 });
 
+// Employees list
+app.get('/employees', function(req, res){
+    res.render('employees_list', {
+        title:'Employees List'
+    });
+});
+
 // Start Server
 app.listen(3000, function(){
     console.log('Server started on port 3000...');

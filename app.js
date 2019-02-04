@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 mongoose.connect('mongodb+srv://admin:admin@taskapp-csx8r.mongodb.net/taskdb?retryWrites=true');
 let db = mongoose.connection;
@@ -24,6 +25,11 @@ var Employee = require('./models/employee');
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+// Body Parser Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
 
 // Home Route
 app.get('/', function(req, res){

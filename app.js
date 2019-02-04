@@ -5,6 +5,15 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://admin:admin@taskapp-csx8r.mongodb.net/test?retryWrites=true');
 let db = mongoose.connection;
 
+// Check connection
+db.once('open', function(){
+    console.log('Connected to MongoDB');
+});
+
+// Check for DB errors
+db.on('error', function(err){
+    console.log(err);
+});
 
 // Init App
 const app = express();

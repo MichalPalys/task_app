@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://admin:admin@taskapp-csx8r.mongodb.net/test?retryWrites=true');
+mongoose.connect('mongodb+srv://admin:admin@taskapp-csx8r.mongodb.net/taskdb?retryWrites=true');
 let db = mongoose.connection;
 
 // Check connection
@@ -18,6 +18,9 @@ db.on('error', function(err){
 // Init App
 const app = express();
 
+// Bring in Models
+var Employee = require('./models/employee');
+
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -29,26 +32,15 @@ app.get('/', function(req, res){
 
 // Employees list
 app.get('/employees', function(req, res){
-    var employees = [
-        {
-            id:1,
-            name:'Alex',
-            salary:3000,
-        },
-        {
-            id:2,
-            name:'Ben',
-            salary:4000,
-        },
-        {
-            id:3,
-            name:'Liv',
-            salary:5000,
+    Employee.find({}, function (err, employees) {
+        if(err){
+            console.log(err);
+        } else {
+            res.render('employees_list', {
+                title: 'Employees List',
+                employees: employees
+            });
         }
-    ];
-    res.render('employees_list', {
-        title:'Employees List',
-        employees:employees
     });
 });
 

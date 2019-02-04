@@ -1,5 +1,9 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb+srv://admin:admin@taskapp-csx8r.mongodb.net/test?retryWrites=true');
+let db = mongoose.connection;
 
 
 // Init App

@@ -36,9 +36,27 @@ app.get('/', function(req, res){
     res.render('index');
 });
 
+// Add Route
 app.get('/employees/add', function(req, res){
     res.render('add_employee', {
         title:'Add Employee'
+    });
+});
+
+// Add Submit POST Route
+app.post('/employees/add', function(req, res) {
+    let employee = new Employee();
+    employee.id = req.body.id;
+    employee.name = req.body.name;
+    employee.salary = req.body.salary;
+
+    employee.save(function(err){
+        if (err) {
+            console.log(err);
+            return
+        } else {
+            res.redirect('/');
+        }
     });
 });
 

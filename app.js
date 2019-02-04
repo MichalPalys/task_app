@@ -30,6 +30,12 @@ app.get('/', function(req, res){
     res.render('index');
 });
 
+app.get('/employees/add', function(req, res){
+    res.render('add_employee', {
+        title:'Add Employee'
+    });
+});
+
 // Employees list
 app.get('/employees', function(req, res){
     Employee.find({}, function (err, employees) {

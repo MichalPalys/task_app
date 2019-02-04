@@ -1,9 +1,9 @@
-let mongoose = required('mongoose');
+let mongoose = require('mongoose');
 
 // Employee Schema
 let employeeSchema = mongoose.Schema({
     id:{
-        type: BigInt,
+        type: String,
         required: true
     },
     name:{
@@ -11,7 +11,7 @@ let employeeSchema = mongoose.Schema({
         required: true
     },
     salary:{
-        type: BigInt,
+        type: String,
         required: true
     }
 });
